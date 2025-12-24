@@ -925,6 +925,26 @@
           </div>
 
           <div class="menu-section">
+            <div class="menu-section-title">Core Concepts</div>
+            <div class="menu-item" data-section="interoperability">
+              <span class="menu-item-icon">🔄</span>
+              <span>FHIR Interoperability</span>
+            </div>
+            <div class="menu-item" data-section="cardinality">
+              <span class="menu-item-icon">🔢</span>
+              <span>FHIR Cardinality</span>
+            </div>
+            <div class="menu-item" data-section="profiles">
+              <span class="menu-item-icon">📋</span>
+              <span>FHIR Profiles</span>
+            </div>
+            <div class="menu-item" data-section="extensions">
+              <span class="menu-item-icon">🔌</span>
+              <span>FHIR Extensions</span>
+            </div>
+          </div>
+
+          <div class="menu-section">
             <div class="menu-section-title">Summary</div>
             <div class="menu-item" data-section="summary">
               <span class="menu-item-icon">🎓</span>
@@ -936,6 +956,251 @@
 
       <!-- Main Content -->
       <main class="main-content">
+        <!-- Interoperability Section -->
+        <section id="interoperability" class="content-section">
+          <div class="content-card">
+            <h2>🔄 FHIR Interoperability</h2>
+
+            <style>
+              .quiz-container {
+                background: linear-gradient(
+                  135deg,
+                  #667eea1a 0%,
+                  #764ba21a 100%
+                );
+                border: 2px solid #667eea;
+                border-radius: 15px;
+                padding: 30px;
+                margin: 20px 0;
+              }
+
+              .quiz-question {
+                font-size: 1.2em;
+                font-weight: 600;
+                color: #764ba2;
+                margin-bottom: 20px;
+                padding: 15px;
+                background: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+              }
+
+              .show-answer-btn {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border: none;
+                padding: 12px 25px;
+                border-radius: 8px;
+                font-size: 1em;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin: 15px 0;
+              }
+
+              .show-answer-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+              }
+
+              .answer-container {
+                display: none;
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                margin-top: 15px;
+                border-left: 4px solid #4caf50;
+              }
+
+              .answer-container.visible {
+                display: block;
+                animation: slideDown 0.3s ease;
+              }
+
+              @keyframes slideDown {
+                from {
+                  opacity: 0;
+                  transform: translateY(-10px);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+              }
+            </style>
+
+            <div class="quiz-container">
+              <h4>Question</h4>
+              <div class="quiz-question">
+                If two systems both comply with FHIR, they'll fully
+                interoperate. True or False?
+              </div>
+              <button class="show-answer-btn" onclick="toggleAnswer(this)">
+                Show Answer
+              </button>
+              <div class="answer-container">
+                <p><strong>Answer: False</strong></p>
+                <p>
+                  FHIR compliance alone doesn't guarantee full interoperability.
+                  Systems need to align on specific profiles, versions, and
+                  implementation guides.
+                </p>
+              </div>
+            </div>
+
+            <script>
+              function toggleAnswer(btn) {
+                const answerContainer = btn.nextElementSibling;
+                answerContainer.classList.toggle("visible");
+                btn.textContent = answerContainer.classList.contains("visible")
+                  ? "Hide Answer"
+                  : "Show Answer";
+              }
+            </script>
+          </div>
+        </section>
+
+        <!-- Cardinality Section -->
+        <section id="cardinality" class="content-section">
+          <div class="content-card">
+            <h2>🔢 FHIR Cardinality</h2>
+
+            <h3>Understanding Cardinality</h3>
+            <div class="highlight">
+              <h4>Definition</h4>
+              <p>
+                Cardinality defines how many times an element may appear in a
+                FHIR resource. It constrains the presence and repetition of data
+                elements.
+              </p>
+            </div>
+
+            <h3>Format</h3>
+            <p>Cardinality is expressed as: <code>min..max</code></p>
+
+            <div class="grid-boxes">
+              <div class="grid-box">
+                <h4>0..1</h4>
+                <p>Optional, at most one</p>
+              </div>
+              <div class="grid-box">
+                <h4>1..1</h4>
+                <p>Mandatory, exactly one</p>
+              </div>
+              <div class="grid-box">
+                <h4>0..*</h4>
+                <p>Optional, unlimited</p>
+              </div>
+              <div class="grid-box">
+                <h4>1..*</h4>
+                <p>Mandatory, at least one</p>
+              </div>
+            </div>
+
+            <h3>Examples</h3>
+            <div class="example-box">
+              <ul>
+                <li><strong>Patient.gender → 0..1</strong> (optional)</li>
+                <li><strong>Observation.value[x] → 0..1</strong></li>
+                <li>
+                  <strong>Patient.name → 0..*</strong> (multiple names allowed)
+                </li>
+              </ul>
+            </div>
+
+            <h3>Why Cardinality Matters</h3>
+            <ul>
+              <li>Enforces business rules</li>
+              <li>Supports validation during data exchange</li>
+              <li>Ensures receiving systems can rely on required data</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Profiles Section -->
+        <section id="profiles" class="content-section">
+          <div class="content-card">
+            <h2>📋 FHIR Profiles</h2>
+
+            <h3>Understanding Profiles</h3>
+            <div class="highlight">
+              <h4>Definition</h4>
+              <p>
+                A Profile is a customized constraint on a base FHIR resource to
+                meet specific implementation or business requirements.
+              </p>
+            </div>
+
+            <h3>What Profiles Can Do</h3>
+            <ul>
+              <li>Restrict cardinality (e.g., change 0..1 to 1..1)</li>
+              <li>
+                Fix or bind values (e.g., gender must be "male" or "female")
+              </li>
+              <li>Limit allowed data types</li>
+              <li>Define required elements</li>
+              <li>Add extensions</li>
+            </ul>
+
+            <h3>Example</h3>
+            <div class="example-box">
+              <h4>Base resource: Patient</h4>
+              <h4>Profile: TodayHealthPatientProfile</h4>
+              <ul>
+                <li>Patient.birthDate → mandatory (1..1)</li>
+                <li>Patient.identifier → must include MRN</li>
+                <li>Patient.telecom → at least one phone number required</li>
+              </ul>
+            </div>
+
+            <h3>Key Characteristics</h3>
+            <ul>
+              <li>Profiles are defined using StructureDefinition</li>
+              <li>
+                They do not create new resources, they constrain existing ones
+              </li>
+              <li>
+                Profiles are essential for interoperability between systems
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Extensions Section -->
+        <section id="extensions" class="content-section">
+          <div class="content-card">
+            <h2>🔌 FHIR Extensions</h2>
+
+            <h3>Understanding Extensions</h3>
+            <div class="highlight">
+              <h4>Definition</h4>
+              <p>
+                Extensions allow you to add data elements that are not part of
+                the base FHIR specification.
+              </p>
+            </div>
+
+            <h3>Why Extensions Exist</h3>
+            <ul>
+              <li>FHIR follows the 80/20 rule</li>
+              <li>Not all use cases can be covered by core resources</li>
+              <li>Extensions provide flexibility without breaking standards</li>
+            </ul>
+
+            <h3>Key Rules</h3>
+            <div class="key-point">
+              <p>
+                Extensions should be used only when no standard element exists.
+              </p>
+              <p>Extensions must have:</p>
+              <ul>
+                <li>A URL (globally unique identifier)</li>
+                <li>A defined data type</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <!-- Recap Section -->
         <section id="recap" class="content-section active">
           <div class="content-card">
@@ -5823,22 +6088,6 @@
                 <h4>D — Draft</h4>
                 <p>Still evolving; expect change</p>
               </div>
-            </div>
-
-            <h3>Resource Relationship</h3>
-            <p>
-              Resources are connected through references. A reference links one
-              resource to another, creating relationships that represent
-              real-world connections (e.g., an Observation references a
-              Patient).
-            </p>
-
-            <div class="visual-diagram">
-              <div class="box">Patient</div>
-              <span class="arrow">←</span>
-              <div class="box">Observation</div>
-              <span class="arrow">→</span>
-              <div class="box">Practitioner</div>
             </div>
           </div>
         </section>
