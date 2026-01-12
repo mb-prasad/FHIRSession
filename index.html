@@ -898,6 +898,10 @@
               <span class="menu-item-icon">👨‍⚕️</span>
               <span>Practitioner Resource</span>
             </div>
+            <div class="menu-item" data-section="resource-practitionerrole">
+              <span class="menu-item-icon">🩺</span>
+              <span>PractitionerRole Resource</span>
+            </div>
             <div class="menu-item" data-section="resource-observation">
               <span class="menu-item-icon">🔬</span>
               <span>Observation Resource</span>
@@ -6340,6 +6344,210 @@
                 >
               </div>
             </div>
+          </div>
+        </section>
+
+        <section id="resource-practitionerrole" class="content-section">
+          <div class="content-card">
+            <h2>🩺 PractitionerRole Resource</h2>
+            <div class="key-point">
+              <h4>Scope and Usage</h4>
+              <p>
+                Represents the role, function, and organizational context in
+                which a practitioner provides healthcare services.
+              </p>
+              <p>
+                The PractitionerRole resource defines how, where, and in what
+                capacity a practitioner practices within a specific organization.
+                It is used to model employment, permissions, specialties,
+                locations, availability, and services, and is essential for
+                scheduling, access control, and clinical workflow execution.
+              </p>
+            </div>
+
+            <h4>Key Fields</h4>
+            <ul>
+              <li>
+                <strong>practitioner:</strong> Reference to the Practitioner (the
+                person)
+              </li>
+              <li>
+                <strong>organization:</strong> Organization where the role is
+                performed
+              </li>
+              <li>
+                <strong>code:</strong> Role performed (physician, care manager,
+                nurse, etc.)
+              </li>
+              <li><strong>specialty:</strong> Clinical or functional specialty</li>
+              <li><strong>location:</strong> Physical or virtual locations of practice</li>
+              <li><strong>telecom:</strong> Role-specific contact information</li>
+              <li><strong>availableTime:</strong> Availability and working hours</li>
+            </ul>
+
+            <div class="code-container">
+              <div class="code-header">
+                <span class="code-title">PractitionerRole Resource Example</span>
+                <span class="code-lang">JSON</span>
+              </div>
+              <div class="code-block">
+                <span class="code-line indent-0"
+                  ><span class="bracket">{</span></span
+                >
+                <span class="code-line indent-1"
+                  ><span class="key">"resourceType"</span>:
+                  <span class="string">"PractitionerRole"</span>,</span
+                >
+                <span class="code-line indent-1"
+                  ><span class="key">"id"</span>:
+                  <span class="string">"practitionerrole-001"</span>,</span
+                >
+                <span class="code-line indent-1"
+                  ><span class="key">"practitioner"</span>:
+                  <span class="bracket">{</span></span
+                >
+                <span class="code-line indent-2"
+                  ><span class="key">"reference"</span>:
+                  <span class="string">"Practitioner/practitioner-001"</span></span
+                >
+                <span class="code-line indent-1"
+                  ><span class="bracket">}</span>,</span
+                >
+                <span class="code-line indent-1"
+                  ><span class="key">"organization"</span>:
+                  <span class="bracket">{</span></span
+                >
+                <span class="code-line indent-2"
+                  ><span class="key">"reference"</span>:
+                  <span class="string">"Organization/org-123"</span></span
+                >
+                <span class="code-line indent-1"
+                  ><span class="bracket">}</span>,</span
+                >
+                <span class="code-line indent-1"
+                  ><span class="key">"code"</span>:
+                  <span class="bracket">[</span></span
+                >
+                <span class="code-line indent-2"
+                  ><span class="bracket">{</span></span
+                >
+                <span class="code-line indent-3"
+                  ><span class="key">"coding"</span>:
+                  <span class="bracket">[</span></span
+                >
+                <span class="code-line indent-4"
+                  ><span class="bracket">{</span></span
+                >
+                <span class="code-line indent-5"
+                  ><span class="key">"system"</span>:
+                  <span class="string">"http://terminology.hl7.org/CodeSystem/practitioner-role"</span>,</span
+                >
+                <span class="code-line indent-5"
+                  ><span class="key">"code"</span>:
+                  <span class="string">"caremanager"</span>,</span
+                >
+                <span class="code-line indent-5"
+                  ><span class="key">"display"</span>:
+                  <span class="string">"Care Manager"</span></span
+                >
+                <span class="code-line indent-4"
+                  ><span class="bracket">}</span></span
+                >
+                <span class="code-line indent-3"
+                  ><span class="bracket">]</span></span
+                >
+                <span class="code-line indent-2"
+                  ><span class="bracket">}</span></span
+                >
+                <span class="code-line indent-1"
+                  ><span class="bracket">]</span></span
+                >
+                <span class="code-line indent-1"
+                  ><span class="key">"specialty"</span>:
+                  <span class="bracket">[</span></span
+                >
+                <span class="code-line indent-2"
+                  ><span class="bracket">{</span></span
+                >
+                <span class="code-line indent-3"
+                  ><span class="key">"text"</span>:
+                  <span class="string">"Remote Patient Monitoring"</span></span
+                >
+                <span class="code-line indent-2"
+                  ><span class="bracket">}</span></span
+                >
+                <span class="code-line indent-1"
+                  ><span class="bracket">]</span>,</span
+                >
+                <span class="code-line indent-1"
+                  ><span class="key">"telecom"</span>:
+                  <span class="bracket">[</span></span
+                >
+                <span class="code-line indent-2"
+                  ><span class="bracket">{</span></span
+                >
+                <span class="code-line indent-3"
+                  ><span class="key">"system"</span>:
+                  <span class="string">"phone"</span>,</span
+                >
+                <span class="code-line indent-3"
+                  ><span class="key">"value"</span>:
+                  <span class="string">"+1-555-123-4567"</span>,</span
+                >
+                <span class="code-line indent-3"
+                  ><span class="key">"use"</span>:
+                  <span class="string">"work"</span></span
+                >
+                <span class="code-line indent-2"
+                  ><span class="bracket">}</span></span
+                >
+                <span class="code-line indent-1"
+                  ><span class="bracket">]</span></span
+                >
+                <span class="code-line indent-0"
+                  ><span class="bracket">}</span></span
+                >
+              </div>
+            </div>
+
+            <h3>Difference between Practitioner and PractitionerRole</h3>
+            <p>When to use which</p>
+            <ul>
+              <li><strong>Use Practitioner</strong> to represent the person</li>
+              <li>
+                <strong>Use PractitionerRole</strong> to represent the job,
+                organization, and permissions
+              </li>
+              <li>
+                Reference <strong>PractitionerRole</strong> (not Practitioner) in
+                Encounter, Appointment, CareTeam, and Task workflows
+              </li>
+            </ul>
+
+            <h4>When to use which (Rules of Thumb)</h4>
+            <p><strong>Use Practitioner when:</strong></p>
+            <ul>
+              <li>Storing identity of a clinician</li>
+              <li>Managing licenses, NPIs, credentials</li>
+              <li>The person exists regardless of employment</li>
+            </ul>
+
+            <p><strong>Use PractitionerRole when:</strong></p>
+            <ul>
+              <li>Assigning a practitioner to an organization</li>
+              <li>Defining permissions, access, or scope</li>
+              <li>Modeling PCP vs Care Manager vs Specialist</li>
+              <li>Handling availability, locations, services</li>
+              <li>Supporting multi-tenant systems</li>
+            </ul>
+
+            <h4>Real-World Pattern (Best Practice)</h4>
+            <p>Always create both.</p>
+            <ul>
+              <li>Create one Practitioner per person</li>
+              <li>Create one PractitionerRole per organization-role combination</li>
+              <li>Reference PractitionerRole in workflows</li>
+            </ul>
           </div>
         </section>
 
