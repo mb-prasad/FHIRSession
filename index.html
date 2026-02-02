@@ -971,6 +971,11 @@
               <span class="menu-item-icon">🩺</span>
               <span>PractitionerRole Resource</span>
             </div>
+            <div class="menu-item" data-section="resource-organization">
+              <span class="menu-item-icon">🏢</span>
+              <span>Organization Resource</span>
+            </div>
+            
             <div class="menu-item" data-section="resource-observation">
               <span class="menu-item-icon">🔬</span>
               <span>Observation Resource</span>
@@ -1007,19 +1012,8 @@
               <span class="menu-item-icon">🦠</span>
               <span>Dengue Fever Case</span>
             </div>
-            <div class="menu-item" data-section="patient-story">
-              <span class="menu-item-icon">🏥</span>
-              <span>John's Diabetes Story</span>
-            </div>
           </div>
 
-          <div class="menu-section">
-            <div class="menu-section-title">Summary</div>
-            <div class="menu-item" data-section="summary">
-              <span class="menu-item-icon">🎓</span>
-              <span>Session Summary</span>
-            </div>
-          </div>
         </nav>
       </aside>
 
@@ -6305,6 +6299,10 @@
                 and maintained by each organization providing care for a
                 patient.
               </p>
+              <p>
+                <strong>FHIR Link: </strong>
+                <a href="https://hl7.org/fhir/patient.html" target="_blank">Patient Resource Documentation</a>
+              </p>
             </div>
             <h4>Key Fields</h4>
             <ul>
@@ -6728,6 +6726,226 @@
             </div>
           </div>
         </section>
+
+        <section id="resource-organization" class="content-section">
+  <div class="content-card">
+    <h2>🏢 Organization Resource</h2>
+
+    <div class="key-point">
+      <h4>Scope and Usage</h4>
+      <p>
+        Represents a formally or informally recognized organization involved in
+        healthcare delivery, administration, or financing.
+      </p>
+      <p>
+        Organization resources are used to model hospitals, clinics, insurance
+        companies, laboratories, government bodies, and other healthcare-related
+        entities. They act as foundational building blocks and are frequently
+        referenced by other resources such as PractitionerRole, Encounter,
+        Patient, Coverage, and Claim.
+      </p>
+    </div>
+
+    <h4>Key Fields</h4>
+    <ul>
+      <li>
+        <strong>identifier:</strong> Business identifiers (NPI, tax ID, payer ID,
+        etc.)
+      </li>
+      <li>
+        <strong>active:</strong> Whether the organization record is active
+      </li>
+      <li>
+        <strong>type:</strong> Kind of organization (hospital, insurer,
+        department, laboratory)
+      </li>
+      <li>
+        <strong>name:</strong> Official name of the organization
+      </li>
+      <li>
+        <strong>telecom:</strong> Contact details (phone, email, fax)
+      </li>
+      <li>
+        <strong>address:</strong> Physical or mailing address
+      </li>
+      <li>
+        <strong>partOf:</strong> Reference to a parent Organization (hierarchy
+        support)
+      </li>
+    </ul>
+
+    <div class="code-container">
+  <div class="code-header">
+    <span class="code-title">Organization Resource Example</span>
+    <span class="code-lang">JSON</span>
+  </div>
+
+  <div class="code-block">
+    <span class="code-line indent-0">
+      <span class="bracket">{</span>
+    </span>
+
+    <span class="code-line indent-1">
+      <span class="key">"resourceType"</span>:
+      <span class="string">"Organization"</span>,
+    </span>
+
+    <span class="code-line indent-1">
+      <span class="key">"id"</span>:
+      <span class="string">"apollo-bangalore"</span>,
+    </span>
+
+    <span class="code-line indent-1">
+      <span class="key">"active"</span>:
+      <span class="string">true</span>,
+    </span>
+
+    <span class="code-line indent-1">
+      <span class="key">"type"</span>:
+      <span class="bracket">[</span>
+    </span>
+    <span class="code-line indent-2">
+      <span class="bracket">{</span>
+    </span>
+    <span class="code-line indent-3">
+      <span class="key">"text"</span>:
+      <span class="string">"Hospital"</span>
+    </span>
+    <span class="code-line indent-2">
+      <span class="bracket">}</span>
+    </span>
+    <span class="code-line indent-1">
+      <span class="bracket">]</span>,
+    </span>
+
+    <span class="code-line indent-1">
+      <span class="key">"name"</span>:
+      <span class="string">"Apollo Hospitals, Bangalore"</span>,
+    </span>
+
+    <span class="code-line indent-1">
+      <span class="key">"identifier"</span>:
+      <span class="bracket">[</span>
+    </span>
+    <span class="code-line indent-2">
+      <span class="bracket">{</span>
+    </span>
+    <span class="code-line indent-3">
+      <span class="key">"system"</span>:
+      <span class="string">"https://nabh.co/hospital-id"</span>,
+    </span>
+    <span class="code-line indent-3">
+      <span class="key">"value"</span>:
+      <span class="string">"NABH-APL-BLR-042"</span>
+    </span>
+    <span class="code-line indent-2">
+      <span class="bracket">}</span>
+    </span>
+    <span class="code-line indent-1">
+      <span class="bracket">]</span>,
+    </span>
+
+    <span class="code-line indent-1">
+      <span class="key">"telecom"</span>:
+      <span class="bracket">[</span>
+    </span>
+    <span class="code-line indent-2">
+      <span class="bracket">{</span>
+    </span>
+    <span class="code-line indent-3">
+      <span class="key">"system"</span>:
+      <span class="string">"phone"</span>,
+    </span>
+    <span class="code-line indent-3">
+      <span class="key">"value"</span>:
+      <span class="string">"+91-80-46124444"</span>
+    </span>
+    <span class="code-line indent-2">
+      <span class="bracket">}</span>
+    </span>
+    <span class="code-line indent-1">
+      <span class="bracket">]</span>,
+    </span>
+
+    <span class="code-line indent-1">
+      <span class="key">"address"</span>:
+      <span class="bracket">[</span>
+    </span>
+    <span class="code-line indent-2">
+      <span class="bracket">{</span>
+    </span>
+    <span class="code-line indent-3">
+      <span class="key">"line"</span>:
+      <span class="bracket">[</span>
+      <span class="string">"154/11, Bannerghatta Road"</span>
+      <span class="bracket">]</span>,
+    </span>
+    <span class="code-line indent-3">
+      <span class="key">"city"</span>:
+      <span class="string">"Bengaluru"</span>,
+    </span>
+    <span class="code-line indent-3">
+      <span class="key">"state"</span>:
+      <span class="string">"Karnataka"</span>,
+    </span>
+    <span class="code-line indent-3">
+      <span class="key">"postalCode"</span>:
+      <span class="string">"560076"</span>,
+    </span>
+    <span class="code-line indent-3">
+      <span class="key">"country"</span>:
+      <span class="string">"India"</span>
+    </span>
+    <span class="code-line indent-2">
+      <span class="bracket">}</span>
+    </span>
+    <span class="code-line indent-1">
+      <span class="bracket">]</span>,
+    </span>
+
+    <span class="code-line indent-1">
+      <span class="key">"partOf"</span>:
+      <span class="bracket">{</span>
+    </span>
+    <span class="code-line indent-2">
+      <span class="key">"reference"</span>:
+      <span class="string">"Organization/apollo-group"</span>,
+    </span>
+    <span class="code-line indent-2">
+      <span class="key">"display"</span>:
+      <span class="string">"Apollo Hospitals Group"</span>
+    </span>
+    <span class="code-line indent-1">
+      <span class="bracket">}</span>
+    </span>
+
+    <span class="code-line indent-0">
+      <span class="bracket">}</span>
+    </span>
+  </div>
+</div>
+
+    
+
+    <h4>Common Use Cases</h4>
+    <ul>
+      <li>Hospitals, clinics, and healthcare facilities</li>
+      <li>Insurance companies and payers</li>
+      <li>Laboratories and diagnostic centers</li>
+      <li>Healthcare departments and sub-organizations</li>
+    </ul>
+
+    <div class="key-point">
+      <h4>💡 Organization is a core reference resource in FHIR</h4>
+      <p>
+        Many clinical and administrative workflows rely on Organization as a
+        central reference, making it essential for modeling real-world
+        healthcare structures and hierarchies.
+      </p>
+    </div>
+  </div>
+</section>
+
 
         <!-- Observation Resource Section -->
         <section id="resource-observation" class="content-section">
