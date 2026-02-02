@@ -5079,44 +5079,25 @@
         <!-- Dengue Fever Patient Story Section -->
         <section id="dengue-story" class="content-section">
           <div class="content-card">
-            <h2>🦠 Patient Story: Dengue Fever Case</h2>
+            <h2>🏥 Patient Story: Ravi's Dengue Hospital Visit</h2>
 
             <div class="highlight">
               <h3>📖 The Story Begins...</h3>
               <p>
-                <strong>Date:</strong> 12 August 2023<br />
-                <strong>Presenter:</strong> Kumar Satyam<br />
-                <strong>Patient:</strong> 14-year-old boy<br />
-                <strong>Practitioner:</strong> Dr. Sharma
+                Meet <strong>Ravi Kumar</strong>, a <strong>32-year-old male</strong> who arrives at <strong>City General Hospital</strong> with high-grade fever, severe body pain, headache, and nausea for the last three days.
                 <br />
-                Let's follow this case from first presentation through follow-up
-                and see how FHIR can represent the patient's data and safety
-                information.
+                Let's follow Ravi's dengue journey and see how each clinical event is represented using FHIR resources.
               </p>
             </div>
 
-            <h3>Step 1: Initial Visit with Dr. Sharma</h3>
+            <h3>Step 1: Patient Registration</h3>
             <div class="example-box">
-              <h4>Presenting Complaints</h4>
+              <h4>📝 Story</h4>
               <p>
-                The patient presented with a
-                <strong
-                  style="
-                    background: #fff3cd;
-                    padding: 2px 6px;
-                    border-radius: 4px;
-                  "
-                  >high-grade fever for four days</strong
-                >, associated with:
+                At registration, Ravi's demographic details are captured and a unique patient record is created.
               </p>
-              <ul>
-                <li><strong>Severe headache</strong></li>
-                <li><strong>Retro-orbital pain</strong></li>
-                <li><strong>Joint and muscle pain</strong></li>
-                <li><strong>Generalized weakness</strong></li>
-              </ul>
 
-              <h4>Patient Registration (FHIR Patient)</h4>
+              <h4>FHIR Resource: Patient</h4>
               <div class="code-container">
                 <div class="code-header">
                   <span class="code-title">Patient Registration</span>
@@ -5125,821 +5106,201 @@
                 <div class="code-block">
                   <pre><code>{
   "resourceType": "Patient",
-  "id": "dengue-patient-001",
-  "identifier": [
-    {
-      "system": "http://hospital.example.org/patients",
-      "value": "MRN-2023-0001"
-    }
-  ],
+  "id": "patient-ravi-kumar",
   "name": [
     {
+      "use": "official",
       "family": "Kumar",
       "given": ["Ravi"]
     }
   ],
   "gender": "male",
-  "birthDate": "2009-08-12"
+  "birthDate": "1993-06-15"
 }</code></pre>
                 </div>
               </div>
+            </div>
 
-              <h4>Physical Examination</h4>
-              <div class="grid-boxes grid-boxes-2-col">
-                <div class="grid-box">
-                  <h4>Vital Signs</h4>
-                  <p
-                    style="font-size: 1.2em; color: #f44336; font-weight: bold"
-                  >
-                    Temperature: <strong>39.2°C</strong>
-                  </p>
-                </div>
-                <div class="grid-box">
-                  <h4>Clinical Findings</h4>
-                  <ul>
-                    <li>Mild dehydration</li>
-                    <li>No bleeding manifestations</li>
-                    <li>No skin rash</li>
-                    <li>No signs of shock</li>
-                  </ul>
-                </div>
-              </div>
+            <h3>Step 2: Symptoms & Clinical Impression Recorded</h3>
+            <div class="example-box">
+              <h4>📝 Story</h4>
+              <p>
+                The physician records suspected dengue based on fever, myalgia, and headache.
+              </p>
 
-              <h4>Clinical Assessment</h4>
-              <div class="key-point">
-                <p>
-                  Based on the clinical presentation and local epidemiology,
-                  <strong
-                    style="
-                      background: #ffebee;
-                      padding: 2px 6px;
-                      border-radius: 4px;
-                    "
-                    >dengue fever was suspected</strong
-                  >.
-                </p>
-              </div>
-
-              <h4>Investigations Ordered</h4>
+              <h4>FHIR Resource: Condition</h4>
               <div class="code-container">
                 <div class="code-header">
-                  <span class="code-title">Ordered Tests</span>
-                  <span class="code-lang">Clinical</span>
+                  <span class="code-title">Suspected Diagnosis</span>
+                  <span class="code-lang">JSON</span>
                 </div>
                 <div class="code-block">
-                  <span class="code-line indent-0"
-                    ><span class="bracket">[</span></span
-                  >
-                  <span class="code-line indent-1"
-                    ><span class="string">"Complete Blood Count (CBC)"</span
-                    >,</span
-                  >
-                  <span class="code-line indent-1"
-                    ><span class="string">"Dengue NS1 Antigen Test"</span></span
-                  >
-                  <span class="code-line indent-0"
-                    ><span class="bracket">]</span></span
-                  >
-                </div>
-              </div>
-
-              <h4>⚠️ Critical Allergy Information</h4>
-              <div
-                class="highlight"
-                style="background: #ffebee; border-left: 5px solid #f44336"
-              >
-                <h4 style="color: #c62828 !important">Known Drug Allergy</h4>
-                <p style="color: #c62828 !important">
-                  <strong>Ibuprofen (NSAID)</strong> - Previously caused:
-                </p>
-                <ul style="color: #c62828 !important">
-                  <li>Facial swelling</li>
-                  <li>Breathing difficulty</li>
-                </ul>
-                <p style="color: #c62828 !important; margin-top: 15px">
-                  <strong>Clinical Decision:</strong> In view of suspected
-                  dengue and the documented NSAID allergy,
-                  <strong
-                    style="
-                      background: #fff;
-                      padding: 2px 6px;
-                      border-radius: 4px;
-                    "
-                    >NSAIDs were strictly avoided</strong
-                  >.
-                </p>
-              </div>
-
-              <h4>Treatment Initiated</h4>
-              <div class="grid-boxes">
-                <div class="grid-box">
-                  <h4>💊 Medication</h4>
-                  <p><strong>Paracetamol</strong> for fever control</p>
-                  <p style="font-size: 0.9em; color: #4caf50; margin-top: 10px">
-                    ✓ Safe for dengue<br />
-                    ✓ Safe for NSAID-allergic patient
-                  </p>
-                </div>
-                <div class="grid-box">
-                  <h4>💧 Supportive Care</h4>
-                  <ul>
-                    <li>Adequate oral fluid intake</li>
-                    <li>Bed rest</li>
-                  </ul>
+                  <pre><code>{
+  "resourceType": "Condition",
+  "id": "condition-suspected-dengue",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "provisional"
+      }
+    ]
+  },
+  "code": {
+    "text": "Suspected Dengue Fever"
+  },
+  "subject": {
+    "reference": "Patient/patient-ravi-kumar"
+  }
+}</code></pre>
                 </div>
               </div>
             </div>
 
-            <h3>Step 2: Follow-up Appointment with Dr. Sharma (2 Days Later)</h3>
+      
+
+            <h3>Step 3: Lab Results Indicate Dengue</h3>
             <div class="example-box">
-              <h4>Follow-up Presentation</h4>
-              <p>The patient returned with:</p>
-              <ul>
-                <li><strong>Persistent fever</strong></li>
-                <li>
-                  <strong>New symptoms:</strong> Nausea and mild abdominal
-                  discomfort
-                </li>
-              </ul>
+              <h4>📝 Story</h4>
+              <p>
+                Ravi's blood is drawn for a glucose test. The lab results are recorded as an Observation resource with coded values.
+              </p>
 
-              <h4>Laboratory Results</h4>
-              <div class="grid-boxes grid-boxes-2-col">
-                <div class="grid-box" style="border-color: #f44336">
-                  <h4 style="color: #f44336">Dengue NS1 Antigen</h4>
-                  <p
-                    style="
-                      font-size: 1.5em;
-                      color: #f44336;
-                      font-weight: bold;
-                      margin: 15px 0;
-                    "
-                  >
-                    POSITIVE
-                  </p>
-                  <p style="font-size: 0.9em; color: #666">
-                    Confirms dengue infection
-                  </p>
+              <h4>FHIR Resource: Observation</h4>
+              <div class="code-container">
+                <div class="code-header">
+                  <span class="code-title">Lab Results</span>
+                  <span class="code-lang">JSON</span>
                 </div>
-                <div class="grid-box" style="border-color: #ff9800">
-                  <h4 style="color: #ff9800">Platelet Count</h4>
-                  <p
-                    style="
-                      font-size: 1.5em;
-                      color: #ff9800;
-                      font-weight: bold;
-                      margin: 15px 0;
-                    "
-                  >
-                    95,000/µL
-                  </p>
-                  <p style="font-size: 0.9em; color: #666">
-                    <strong style="color: #ff9800">Thrombocytopenia</strong> -
-                    Below normal range
-                  </p>
-                </div>
-              </div>
-
-              <h4>Physical Examination</h4>
-              <ul>
-                <li>Mild abdominal tenderness</li>
-                <li>No petechiae</li>
-                <li>No mucosal bleeding</li>
-                <li>No hemodynamic instability</li>
-              </ul>
-
-              <h4>Confirmed Diagnosis</h4>
-              <div class="highlight">
-                <h4>Dengue Fever</h4>
-                <p>
-                  Laboratory confirmation with NS1 antigen positivity and
-                  thrombocytopenia supports the diagnosis.
-                </p>
-              </div>
-
-              <h4>Management Plan</h4>
-              <div class="grid-boxes">
-                <div class="grid-box">
-                  <h4>💊 Medication</h4>
-                  <p><strong>Paracetamol only</strong></p>
-                  <p style="font-size: 0.85em; color: #666; margin-top: 10px">
-                    Continued supportive management
-                  </p>
-                </div>
-                <div class="grid-box">
-                  <h4>📊 Monitoring</h4>
-                  <ul style="font-size: 0.95em">
-                    <li>Close monitoring of platelet counts</li>
-                    <li>Watch for warning signs</li>
-                  </ul>
-                </div>
-                <div class="grid-box">
-                  <h4>💧 Fluid Management</h4>
-                  <p>Strict fluid management</p>
-                </div>
-                <div class="grid-box" style="border-color: #f44336">
-                  <h4 style="color: #f44336">⚠️ Restrictions</h4>
-                  <p style="color: #f44336; font-weight: bold">
-                    Avoid all NSAIDs and aspirin
-                  </p>
-                  <p style="font-size: 0.85em; color: #666; margin-top: 10px">
-                    Due to bleeding risk in dengue and documented drug allergy
-                  </p>
-                </div>
-              </div>
-
-              <h4>Admission Criteria</h4>
-              <div class="key-point">
-                <p>Hospital admission was advised if:</p>
-                <ul>
-                  <li>Platelet levels declined further</li>
-                  <li>Warning signs developed</li>
-                </ul>
-              </div>
-            </div>
-
-            <h3>Step 3: FHIR Resources Representation</h3>
-            <p>
-              Let's see how this clinical case would be represented using FHIR
-              resources:
-            </p>
-
-            <h4>Patient Resource</h4>
-            <div class="code-container">
-              <div class="code-header">
-                <span class="code-title">Patient - 14-year-old boy</span>
-                <span class="code-lang">JSON</span>
-              </div>
-              <div class="code-block">
-                <span class="code-line indent-0"
-                  ><span class="bracket">{</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"resourceType"</span>:
-                  <span class="string">"Patient"</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"id"</span>:
-                  <span class="string">"dengue-patient-001"</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"gender"</span>:
-                  <span class="string">"male"</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"birthDate"</span>:
-                  <span class="string">"2009-08-12"</span></span
-                >
-                <span class="code-line indent-0"
-                  ><span class="bracket">}</span></span
-                >
-              </div>
-            </div>
-
-            <h4>Practitioner Resource</h4>
-            <div class="code-container">
-              <div class="code-header">
-                <span class="code-title">Practitioner - Dr. Sharma</span>
-                <span class="code-lang">JSON</span>
-              </div>
-              <div class="code-block">
-                <span class="code-line indent-0"
-                  ><span class="bracket">{</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"resourceType"</span>:
-                  <span class="string">"Practitioner"</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"id"</span>:
-                  <span class="string">"practitioner-sharma"</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"name"</span>:
-                  <span class="bracket">[</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="bracket">{</span></span
-                >
-                <span class="code-line indent-3"
-                  ><span class="key">"family"</span>:
-                  <span class="string">"Sharma"</span>,</span
-                >
-                <span class="code-line indent-3"
-                  ><span class="key">"prefix"</span>:
-                  <span class="bracket">[</span><span class="string">"Dr."</span
-                  ><span class="bracket">]</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="bracket">}</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="bracket">]</span></span
-                >
-                <span class="code-line indent-0"
-                  ><span class="bracket">}</span></span
-                >
-              </div>
-            </div>
-
-            <h4>Condition Resource - Dengue Fever</h4>
-            <div class="code-container">
-              <div class="code-header">
-                <span class="code-title">Condition - Confirmed Diagnosis</span>
-                <span class="code-lang">JSON</span>
-              </div>
-              <div class="code-block">
-                <span class="code-line indent-0"
-                  ><span class="bracket">{</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"resourceType"</span>:
-                  <span class="string">"Condition"</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"subject"</span>:
-                  <span class="bracket">{</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="key">"reference"</span>:
-                  <span class="string">"Patient/dengue-patient-001"</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="bracket">}</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"code"</span>:
-                  <span class="bracket">{</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="key">"coding"</span>:
-                  <span class="bracket">[</span></span
-                >
-                <span class="code-line indent-3"
-                  ><span class="bracket">{</span></span
-                >
-                <span class="code-line indent-4"
-                  ><span class="key">"system"</span>:
-                  <span class="string">"http://snomed.info/sct"</span>,</span
-                >
-                <span class="code-line indent-4"
-                  ><span class="key">"code"</span>:
-                  <span class="string">"38362002"</span>,</span
-                >
-                <span class="code-line indent-4"
-                  ><span class="key">"display"</span>:
-                  <span class="string">"Dengue fever"</span></span
-                >
-                <span class="code-line indent-3"
-                  ><span class="bracket">}</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="bracket">]</span>,</span
-                >
-                <span class="code-line indent-2"
-                  ><span class="key">"text"</span>:
-                  <span class="string">"Dengue Fever"</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="bracket">}</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"onsetDateTime"</span>:
-                  <span class="string">"2023-08-08"</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"recordedDate"</span>:
-                  <span class="string">"2023-08-12"</span></span
-                >
-                <span class="code-line indent-0"
-                  ><span class="bracket">}</span></span
-                >
-              </div>
-            </div>
-
-            <h4>Observation Resources</h4>
-            <div class="grid-boxes grid-boxes-2-col">
-              <div class="grid-box">
-                <h4>Temperature Observation</h4>
-                <div class="code-container">
-                  <div class="code-header">
-                    <span class="code-title">High Fever</span>
-                    <span class="code-lang">JSON</span>
-                  </div>
-                  <div class="code-block">
-                    <span class="code-line indent-0"
-                      ><span class="bracket">{</span></span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="key">"resourceType"</span>:
-                      <span class="string">"Observation"</span>,</span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="key">"status"</span>:
-                      <span class="string">"final"</span>,</span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="key">"code"</span>:
-                      <span class="bracket">{</span></span
-                    >
-                    <span class="code-line indent-2"
-                      ><span class="key">"text"</span>:
-                      <span class="string">"Body Temperature"</span></span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="bracket">}</span>,</span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="key">"subject"</span>:
-                      <span class="bracket">{</span></span
-                    >
-                    <span class="code-line indent-2"
-                      ><span class="key">"reference"</span>:
-                      <span class="string"
-                        >"Patient/dengue-patient-001"</span
-                      ></span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="bracket">}</span>,</span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="key">"valueQuantity"</span>:
-                      <span class="bracket">{</span></span
-                    >
-                    <span class="code-line indent-2"
-                      ><span class="key">"value"</span>:
-                      <span class="number">39.2</span>,</span
-                    >
-                    <span class="code-line indent-2"
-                      ><span class="key">"unit"</span>:
-                      <span class="string">"°C"</span></span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="bracket">}</span></span
-                    >
-                    <span class="code-line indent-0"
-                      ><span class="bracket">}</span></span
-                    >
-                  </div>
-                </div>
-              </div>
-
-              <div class="grid-box">
-                <h4>Platelet Count Observation</h4>
-                <div class="code-container">
-                  <div class="code-header">
-                    <span class="code-title">Thrombocytopenia</span>
-                    <span class="code-lang">JSON</span>
-                  </div>
-                  <div class="code-block">
-                    <span class="code-line indent-0"
-                      ><span class="bracket">{</span></span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="key">"resourceType"</span>:
-                      <span class="string">"Observation"</span>,</span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="key">"status"</span>:
-                      <span class="string">"final"</span>,</span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="key">"code"</span>:
-                      <span class="bracket">{</span></span
-                    >
-                    <span class="code-line indent-2"
-                      ><span class="key">"text"</span>:
-                      <span class="string">"Platelet Count"</span></span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="bracket">}</span>,</span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="key">"subject"</span>:
-                      <span class="bracket">{</span></span
-                    >
-                    <span class="code-line indent-2"
-                      ><span class="key">"reference"</span>:
-                      <span class="string"
-                        >"Patient/dengue-patient-001"</span
-                      ></span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="bracket">}</span>,</span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="key">"valueQuantity"</span>:
-                      <span class="bracket">{</span></span
-                    >
-                    <span class="code-line indent-2"
-                      ><span class="key">"value"</span>:
-                      <span class="number">95000</span>,</span
-                    >
-                    <span class="code-line indent-2"
-                      ><span class="key">"unit"</span>:
-                      <span class="string">"/µL"</span></span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="bracket">}</span>,</span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="key">"interpretation"</span>:
-                      <span class="bracket">[</span></span
-                    >
-                    <span class="code-line indent-2"
-                      ><span class="bracket">{</span></span
-                    >
-                    <span class="code-line indent-3"
-                      ><span class="key">"coding"</span>:
-                      <span class="bracket">[</span></span
-                    >
-                    <span class="code-line indent-4"
-                      ><span class="bracket">{</span></span
-                    >
-                    <span class="code-line indent-5"
-                      ><span class="key">"code"</span>:
-                      <span class="string">"L"</span>,</span
-                    >
-                    <span class="code-line indent-5"
-                      ><span class="key">"display"</span>:
-                      <span class="string">"Low"</span></span
-                    >
-                    <span class="code-line indent-4"
-                      ><span class="bracket">}</span></span
-                    >
-                    <span class="code-line indent-3"
-                      ><span class="bracket">]</span></span
-                    >
-                    <span class="code-line indent-2"
-                      ><span class="bracket">}</span></span
-                    >
-                    <span class="code-line indent-1"
-                      ><span class="bracket">]</span></span
-                    >
-                    <span class="code-line indent-0"
-                      ><span class="bracket">}</span></span
-                    >
-                  </div>
+                <div class="code-block">
+                  <pre><code>{
+  "resourceType": "Observation",
+  "id": "obs-platelet-count",
+  "status": "final",
+  "code": {
+    "text": "Platelet Count"
+  },
+  "subject": {
+    "reference": "Patient/patient-ravi-kumar"
+  },
+  "valueQuantity": {
+    "value": 85000,
+    "unit": "cells/µL"
+  }
+}</code></pre>
                 </div>
               </div>
             </div>
 
-            <h4>AllergyIntolerance Resource</h4>
-            <div class="code-container">
-              <div class="code-header">
-                <span class="code-title">Critical Allergy - Ibuprofen</span>
-                <span class="code-lang">JSON</span>
-              </div>
-              <div class="code-block">
-                <span class="code-line indent-0"
-                  ><span class="bracket">{</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"resourceType"</span>:
-                  <span class="string">"AllergyIntolerance"</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"clinicalStatus"</span>:
-                  <span class="bracket">{</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="key">"coding"</span>:
-                  <span class="bracket">[</span></span
-                >
-                <span class="code-line indent-3"
-                  ><span class="bracket">{</span></span
-                >
-                <span class="code-line indent-4"
-                  ><span class="key">"code"</span>:
-                  <span class="string">"active"</span></span
-                >
-                <span class="code-line indent-3"
-                  ><span class="bracket">}</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="bracket">]</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="bracket">}</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"patient"</span>:
-                  <span class="bracket">{</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="key">"reference"</span>:
-                  <span class="string">"Patient/dengue-patient-001"</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="bracket">}</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"code"</span>:
-                  <span class="bracket">{</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="key">"coding"</span>:
-                  <span class="bracket">[</span></span
-                >
-                <span class="code-line indent-3"
-                  ><span class="bracket">{</span></span
-                >
-                <span class="code-line indent-4"
-                  ><span class="key">"system"</span>:
-                  <span class="string"
-                    >"http://www.nlm.nih.gov/research/umls/rxnorm"</span
-                  >,</span
-                >
-                <span class="code-line indent-4"
-                  ><span class="key">"code"</span>:
-                  <span class="string">"5640"</span>,</span
-                >
-                <span class="code-line indent-4"
-                  ><span class="key">"display"</span>:
-                  <span class="string">"Ibuprofen"</span></span
-                >
-                <span class="code-line indent-3"
-                  ><span class="bracket">}</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="bracket">]</span>,</span
-                >
-                <span class="code-line indent-2"
-                  ><span class="key">"text"</span>:
-                  <span class="string">"Ibuprofen"</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="bracket">}</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"reaction"</span>:
-                  <span class="bracket">[</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="bracket">{</span></span
-                >
-                <span class="code-line indent-3"
-                  ><span class="key">"manifestation"</span>:
-                  <span class="bracket">[</span></span
-                >
-                <span class="code-line indent-4"
-                  ><span class="bracket">{</span></span
-                >
-                <span class="code-line indent-5"
-                  ><span class="key">"text"</span>:
-                  <span class="string">"Facial swelling"</span></span
-                >
-                <span class="code-line indent-4"
-                  ><span class="bracket">}</span>,</span
-                >
-                <span class="code-line indent-4"
-                  ><span class="bracket">{</span></span
-                >
-                <span class="code-line indent-5"
-                  ><span class="key">"text"</span>:
-                  <span class="string">"Breathing difficulty"</span></span
-                >
-                <span class="code-line indent-4"
-                  ><span class="bracket">}</span></span
-                >
-                <span class="code-line indent-3"
-                  ><span class="bracket">]</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="bracket">}</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="bracket">]</span></span
-                >
-                <span class="code-line indent-0"
-                  ><span class="bracket">}</span></span
-                >
+            <h3>Step 4: Dengue Diagnosis Confirmed</h3>
+            <div class="example-box">
+              <h4>📝 Story</h4>
+              <p>
+                Based on lab confirmation, dengue fever is formally diagnosed.
+              </p>
+
+              <h4>FHIR Resource: Condition</h4>
+              <div class="code-container">
+                <div class="code-header">
+                  <span class="code-title">Confirmed Diagnosis</span>
+                  <span class="code-lang">JSON</span>
+                </div>
+                <div class="code-block">
+                  <pre><code>{
+  "resourceType": "Condition",
+  "id": "condition-confirmed-dengue",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed"
+      }
+    ]
+  },
+  "code": {
+    "text": "Dengue Fever"
+  },
+  "subject": {
+    "reference": "Patient/patient-ravi-kumar"
+  }
+}</code></pre>
+                </div>
               </div>
             </div>
 
-            <h4>MedicationRequest Resource</h4>
-            <div class="code-container">
-              <div class="code-header">
-                <span class="code-title">Paracetamol Prescription</span>
-                <span class="code-lang">JSON</span>
-              </div>
-              <div class="code-block">
-                <span class="code-line indent-0"
-                  ><span class="bracket">{</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"resourceType"</span>:
-                  <span class="string">"MedicationRequest"</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"status"</span>:
-                  <span class="string">"active"</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"intent"</span>:
-                  <span class="string">"order"</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"subject"</span>:
-                  <span class="bracket">{</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="key">"reference"</span>:
-                  <span class="string">"Patient/dengue-patient-001"</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="bracket">}</span>,</span
-                >
-                <span class="code-line indent-1"
-                  ><span class="key">"medicationCodeableConcept"</span>:
-                  <span class="bracket">{</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="key">"coding"</span>:
-                  <span class="bracket">[</span></span
-                >
-                <span class="code-line indent-3"
-                  ><span class="bracket">{</span></span
-                >
-                <span class="code-line indent-4"
-                  ><span class="key">"system"</span>:
-                  <span class="string"
-                    >"http://www.nlm.nih.gov/research/umls/rxnorm"</span
-                  >,</span
-                >
-                <span class="code-line indent-4"
-                  ><span class="key">"code"</span>:
-                  <span class="string">"161"</span>,</span
-                >
-                <span class="code-line indent-4"
-                  ><span class="key">"display"</span>:
-                  <span class="string">"Acetaminophen"</span></span
-                >
-                <span class="code-line indent-3"
-                  ><span class="bracket">}</span></span
-                >
-                <span class="code-line indent-2"
-                  ><span class="bracket">]</span>,</span
-                >
-                <span class="code-line indent-2"
-                  ><span class="key">"text"</span>:
-                  <span class="string">"Paracetamol"</span></span
-                >
-                <span class="code-line indent-1"
-                  ><span class="bracket">}</span></span
-                >
-                <span class="code-line indent-0"
-                  ><span class="bracket">}</span></span
-                >
+            <h3>Step 5: Treatment & Monitoring Plan</h3>
+            <div class="example-box">
+              <h4>📝 Story</h4>
+              <p>
+                Ravi is started on IV fluids, paracetamol, and close platelet monitoring. He is admitted for observation.
+              </p>
+
+              <h4>FHIR Resource: CarePlan</h4>
+              <div class="code-container">
+                <div class="code-header">
+                  <span class="code-title">Treatment Plan</span>
+                  <span class="code-lang">JSON</span>
+                </div>
+                <div class="code-block">
+                  <pre><code>{
+  "resourceType": "CarePlan",
+  "id": "careplan-dengue",
+  "status": "active",
+  "intent": "plan",
+  "title": "Dengue Supportive Care Plan",
+  "subject": {
+    "reference": "Patient/patient-ravi-kumar"
+  },
+  "activity": [
+    {
+      "detail": {
+        "description": "IV fluids, fever control, daily platelet monitoring"
+      }
+    }
+  ]
+}</code></pre>
+                </div>
               </div>
             </div>
 
             <div class="key-point">
-              <h4>📚 What We Learned from Dengue Story:</h4>
+              <h4>📚 What We Learned from Ravi's Story:</h4>
               <ul>
                 <li>
-                  <strong>Patient Resource</strong> stores demographic
-                  information (age, gender)
+                  <strong>Patient Resource</strong> captures demographic information and creates a unique patient record
                 </li>
                 <li>
-                  <strong>Practitioner Resource</strong> represents the treating
-                  doctor
+                  <strong>Condition Resources</strong> can be provisional (suspected) or confirmed based on clinical evidence
                 </li>
                 <li>
-                  <strong>Condition Resource</strong> captures the diagnosis
-                  (Dengue Fever) with coded terminology
+                  <strong>Observation Resource</strong> stores clinical measurements and lab results with quantitative values
                 </li>
                 <li>
-                  <strong>Observation Resources</strong> store clinical
-                  measurements (temperature, platelet count)
+                  <strong>CarePlan Resource</strong> outlines the treatment strategy and monitoring activities for the patient
                 </li>
                 <li>
-                  <strong>AllergyIntolerance Resource</strong> is critical for
-                  patient safety - prevents dangerous medication administration
-                </li>
-                <li>
-                  <strong>MedicationRequest Resource</strong> documents
-                  prescribed medications with appropriate coding
-                </li>
-                <li>
-                  <strong>References connect resources</strong> - All resources
-                  reference the Patient, creating a connected healthcare record
+                  <strong>References connect resources</strong> - All resources reference the Patient, creating a connected healthcare record throughout Ravi's hospital journey
                 </li>
               </ul>
               <p style="margin-top: 15px">
                 This case demonstrates how
-                <strong>multiple FHIR resources work together</strong> to
-                represent a complete clinical scenario, with special attention
-                to
-                <strong
-                  style="
-                    background: #ffebee;
-                    padding: 2px 6px;
-                    border-radius: 4px;
-                  "
-                  >critical safety information</strong
-                >
-                (drug allergies) that must be prominently displayed and
-                respected in clinical decision-making.
+                <strong>FHIR resources work sequentially</strong> to track a patient's clinical journey from admission through diagnosis confirmation to treatment planning, enabling comprehensive documentation and coordination of care.
               </p>
             </div>
           </div>
@@ -7439,7 +6800,6 @@
             </div>
           </div>
         </section>
-        -->
       </main>
     </div>
 
