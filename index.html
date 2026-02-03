@@ -955,10 +955,6 @@
               <span class="menu-item-icon">📂</span>
               <span>Resource Categories</span>
             </div>
-            <div class="menu-item" data-section="cardinality">
-              <span class="menu-item-icon">🔢</span>
-              <span>FHIR Cardinality</span>
-            </div>
             <div class="menu-item" data-section="resource-patient">
               <span class="menu-item-icon">🧑</span>
               <span>Patient Resource</span>
@@ -5465,9 +5461,8 @@
 
             <h3>Cardinality</h3>
             <p>
-              The lower and upper bounds on how many times this element is
-              allowed to appear within the Resource. It defines in min…max
-              direction.
+              Cardinality defines how many times an element may appear in a FHIR resource. It constrains the presence and repetition of data elements.
+              In other words, it specifies the minimum and maximum number of occurrences of an element within a resource.
             </p>
             <table class="comparison-table">
               <thead>
@@ -5495,6 +5490,16 @@
                 </tr>
               </tbody>
             </table>
+            <h4>Examples</h4>
+            <div class="example-box">
+              <ul>
+                <li><strong>Patient.gender → 0..1</strong> (optional)</li>
+                <li><strong>Observation.value[x] → 0..1</strong></li>
+                <li>
+                  <strong>Patient.name → 0..*</strong> (multiple names allowed)
+                </li>
+              </ul>
+            </div>
 
             <h3>Flags</h3>
             <p>
@@ -5583,62 +5588,6 @@
           </div>
         </section>
 
-        <!-- Cardinality Section -->
-        <section id="cardinality" class="content-section">
-          <div class="content-card">
-            <h2>🔢 FHIR Cardinality</h2>
-
-            <h3>Understanding Cardinality</h3>
-            <div class="highlight">
-              <h4>Definition</h4>
-              <p>
-                Cardinality defines how many times an element may appear in a
-                FHIR resource. It constrains the presence and repetition of data
-                elements.
-              </p>
-            </div>
-
-            <h3>Format</h3>
-            <p>Cardinality is expressed as: <code>min..max</code></p>
-
-            <div class="grid-boxes">
-              <div class="grid-box">
-                <h4>0..1</h4>
-                <p>Optional, at most one</p>
-              </div>
-              <div class="grid-box">
-                <h4>1..1</h4>
-                <p>Mandatory, exactly one</p>
-              </div>
-              <div class="grid-box">
-                <h4>0..*</h4>
-                <p>Optional, unlimited</p>
-              </div>
-              <div class="grid-box">
-                <h4>1..*</h4>
-                <p>Mandatory, at least one</p>
-              </div>
-            </div>
-
-            <h3>Examples</h3>
-            <div class="example-box">
-              <ul>
-                <li><strong>Patient.gender → 0..1</strong> (optional)</li>
-                <li><strong>Observation.value[x] → 0..1</strong></li>
-                <li>
-                  <strong>Patient.name → 0..*</strong> (multiple names allowed)
-                </li>
-              </ul>
-            </div>
-
-            <h3>Why Cardinality Matters</h3>
-            <ul>
-              <li>Enforces business rules</li>
-              <li>Supports validation during data exchange</li>
-              <li>Ensures receiving systems can rely on required data</li>
-            </ul>
-          </div>
-        </section>
 
         <!-- Patient Resource Section -->
         <section id="resource-patient" class="content-section">
